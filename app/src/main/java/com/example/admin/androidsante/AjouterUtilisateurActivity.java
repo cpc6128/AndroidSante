@@ -3,7 +3,6 @@ package com.example.admin.androidsante;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -31,11 +30,10 @@ public class AjouterUtilisateurActivity extends Activity {
         utilisateur.setAge(age.getText().toString());
         // Transformation en JSON :
         String flux = (new Gson()).toJson(utilisateur);
-        Log.d("Utilisateur en JSON", flux);
 
         // On dépose notre utilisateur jsonné dans l'intent
         Intent resultIntent = new Intent();
-        resultIntent.putExtra("utilisateur", flux);
+        resultIntent.putExtra(PrincipaleActivity.ARG_UTILISATEUR, flux);
         setResult(2, resultIntent);
 
         // Bye l'activité

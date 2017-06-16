@@ -14,7 +14,8 @@ import com.google.gson.Gson;
 import java.util.List;
 
 public class PrincipaleActivity extends FragmentActivity {
-
+    final  static  String ARG_UTILISATEUR = "utilisateur";
+    static final Integer RESULTNOM = 2;
     ListeUtilisateurFragment fragment;
     private DataSource<User> dataSource;
     // Pour quitter l'application :
@@ -45,7 +46,7 @@ public class PrincipaleActivity extends FragmentActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(PrincipaleActivity.this, AjouterUtilisateurActivity.class);
-                startActivityForResult(i, 2);
+                startActivityForResult(i, RESULTNOM);
             }
         });
 
@@ -96,9 +97,9 @@ public class PrincipaleActivity extends FragmentActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (resultCode == 2) {
+        if (resultCode == RESULTNOM) {
 
-            String flux = data.getStringExtra("utilisateur"); // Tester si pas null ;-)
+            String flux = data.getStringExtra(ARG_UTILISATEUR); // Tester si pas null ;-)
             User utilisateur = new Gson().fromJson(flux, User.class);
 
             try {

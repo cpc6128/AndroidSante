@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.admin.androidsante.database.modele.User;
-import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -64,17 +63,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UtilisateurFragment articleFrag = (UtilisateurFragment) mainActivity.getFragmentManager().findFragmentById(R.id.article_fragment);
 
+                UtilisateurFragment articleFrag = (UtilisateurFragment) mainActivity.getFragmentManager().findFragmentById(R.id.article_fragment);
                 if(articleFrag != null){
-                    articleFrag.updateArticleView(utilisateurs.get(position));
+                    articleFrag.setUtilisateurs(utilisateurs);
+                    articleFrag.updateArticleView(position);
                 }
                 else {
-                    String flux = (new Gson()).toJson(utilisateurs.get(position));
-
                     UtilisateurFragment newFragment = new UtilisateurFragment();
                     Bundle args = new Bundle();
-                    args.putString(UtilisateurFragment.ARG_UTILISATEUR,flux);
+                    newFragment.setUtilisateurs(utilisateurs);
+                    args.putInt(UtilisateurFragment.ARG_POSITION,position);
                     newFragment.setArguments(args);
                     FragmentTransaction transaction = mainActivity.getFragmentManager().beginTransaction();
                     transaction.replace(R.id.fragment_container,newFragment);
