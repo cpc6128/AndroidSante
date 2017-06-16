@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidSante</string>
+    <string name="noAge">Age non renseigné</string>
 </resources>
