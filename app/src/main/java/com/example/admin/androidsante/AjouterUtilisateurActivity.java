@@ -9,7 +9,6 @@ import android.widget.EditText;
 import com.example.admin.androidsante.database.modele.User;
 import com.google.gson.Gson;
 
-
 public class AjouterUtilisateurActivity extends Activity {
 
 

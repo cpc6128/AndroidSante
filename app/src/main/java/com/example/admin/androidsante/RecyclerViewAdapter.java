@@ -1,5 +1,6 @@
 package com.example.admin.androidsante;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -23,7 +24,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private List<User> utilisateurs;
     private ListeUtilisateurFragment mainActivity;
 
-    public RecyclerViewAdapter(List<User> utilisateurs,ListeUtilisateurFragment mainActivity) {
+    public RecyclerViewAdapter(List<User> utilisateurs, ListeUtilisateurFragment mainActivity) {
         this.utilisateurs = utilisateurs;
         this.mainActivity = mainActivity;
     }
@@ -59,6 +60,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         if(position % 2 == 0){
             holder.itemView.setBackgroundColor(ContextCompat.getColor(mainActivity.getContext(), R.color.colorRecyclerView1));
         }
+        else
+            holder.itemView.setBackgroundColor(Color.WHITE);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

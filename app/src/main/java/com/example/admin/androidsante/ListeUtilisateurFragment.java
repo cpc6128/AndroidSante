@@ -2,6 +2,7 @@ package com.example.admin.androidsante;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +19,21 @@ import java.util.List;
 
 public class ListeUtilisateurFragment extends Fragment {
 
+    public RecyclerView getRecyclerView() {
+        return recyclerView;
+    }
+
     private RecyclerView recyclerView;
     private RecyclerViewAdapter adapter;
+
+    public List<User> getUtilisateurs() {
+        return utilisateurs;
+    }
+
+    public void setUtilisateurs(List<User> utilisateurs) {
+        this.utilisateurs = utilisateurs;
+    }
+
     private List<User> utilisateurs = new ArrayList<>();
 
     @Override

@@ -57,7 +57,7 @@ public class PrincipaleActivity extends FragmentActivity {
         super.onStart();
         try {
             if (dataSource == null) {
-                dataSource = new DataSource<>(this, User.class, versionDB);
+                dataSource = new DataSource<>(this, User.class);
                 dataSource.open();
             }
         } catch (Exception e) {

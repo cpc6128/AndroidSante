@@ -1,9 +1,12 @@
 package com.example.admin.androidsante;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +30,7 @@ public class UtilisateurFragment extends Fragment {
     private ListeUtilisateurFragment liste = new ListeUtilisateurFragment();
     private int mCurrentPosition = -1;
     private List<User> utilisateurs;
+    private int previousPosition;
 
     User utilisateur;
 
@@ -51,15 +55,23 @@ public class UtilisateurFragment extends Fragment {
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.d("PAGER", "page : " + position);
-                //View v = (View) liste.getAdapter().notifyDataSetChanged();
 
             }
 
             @Override
             public void onPageSelected(int position) {
-                Log.d("PAGER", "page : " + position);
-                //liste.getListView().setItemChecked(position, true);
+                if(previousPosition!= -1 ) {
+                    View v = liste.getRecyclerView().getChildAt(previousPosition);
+                    if(previousPosition % 2 == 0){
+                        v.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorRecyclerView1));
+                    }
+                    else
+                        v.setBackgroundColor(Color.WHITE);
+                }
+                View v = liste.getRecyclerView().getChildAt(position);
+
+                previousPosition = position;
+                v.setBackgroundColor(Color.GREEN);
             }
 
             @Override
